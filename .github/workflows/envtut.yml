@@ -1,0 +1,33 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Env Variables #you can create custome env variables for your workflow
+env:
+  WORKFLOW_VARIABLES: "Set your own variables"
+
+# Controls when the workflow will run
+on:
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    env:
+      JOB_VARIABLE: "This is my job variable"
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: prints the environment variables present
+        env:
+          STEP_VARIABLE: "An example step variable"
+        run: |
+          echo These are my custom environmen variables
+          echo $WORKFLOW_VARIABLE
+          echo $JOB_VARIABLE
+          echo $STEP_VARIABLE
